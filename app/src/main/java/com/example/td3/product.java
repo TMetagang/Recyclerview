@@ -15,14 +15,14 @@ public class product {
     private String website_link;
     private String description;
     private Integer rating;
-    private Integer category;
+    private String category;
     private String product_type;
     private List<tag> tag_list;
     private List<ProductColor> product_colours;
-    private Integer api_featured_image;
-    private Integer created_at;
-    private Integer updated_at;
-    private Integer product_api_url;
+    private String api_featured_image;
+    private String created_at;
+    private String updated_at;
+    private String product_api_url;
 
     public Integer getId() {
         return id;
@@ -68,7 +68,7 @@ public class product {
         return rating;
     }
 
-    public Integer getCategory() {
+    public String getCategory() {
         return category;
     }
 
@@ -84,19 +84,19 @@ public class product {
         return product_colours;
     }
 
-    public Integer getApi_featured_image() {
+    public String getApi_featured_image() {
         return api_featured_image;
     }
 
-    public Integer getCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 
-    public Integer getUpdated_at() {
+    public String getUpdated_at() {
         return updated_at;
     }
 
-    public Integer getProduct_api_url() {
+    public String getProduct_api_url() {
         return product_api_url;
     }
 }

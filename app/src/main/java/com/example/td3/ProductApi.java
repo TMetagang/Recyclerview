@@ -9,6 +9,6 @@ import retrofit2.http.Query;
 public interface ProductApi {
 
     @GET("/api/v1/products.json")
-    Call<RestMakeUpResponse> getRestMakeUpResponse();
+    Call<List<product>> ProductResponse();
 
 }

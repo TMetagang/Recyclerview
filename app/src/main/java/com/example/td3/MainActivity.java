@@ -73,14 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
         ProductApi productApi = retrofit.create(ProductApi.class);
 
-        Call<RestMakeUpResponse> call = productApi.getRestMakeUpResponse();
+        Call<List<product>> call = productApi.ProductResponse();
 
-        call.enqueue(new Callback<RestMakeUpResponse>() {
+
+        call.enqueue(new Callback<List<product>>() {
             @Override
-            public void onResponse(Call<RestMakeUpResponse> call, Response<RestMakeUpResponse> response) {
+            public void onResponse(Call<List<product>> call, Response<List<product>> response) {
                 if(response.isSuccessful() && response.body() != null){
 
-                    List<product> pList = response.body().getResults();
+                    List<product> pList = response.body();
                     Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
 
                 }else{
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RestMakeUpResponse> call, Throwable t) {
+            public void onFailure(Call<List<product>> call, Throwable t) {
 
                 showError();
 
