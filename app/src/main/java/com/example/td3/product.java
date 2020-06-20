@@ -1,115 +1,74 @@
 package com.example.td3;
 
-import android.os.Parcelable;
-import com.google.gson.annotations.SerializedName;
 import java.util.List;
+
+//I am going to maintain the product but replace them by MOST POPULAR TV's'
 
 public class product  {
 
 
-    private Integer id;
+    private String id;
+
+    private String rank;
+
+    private String rankUpDown;
 
 
-    private String brand;
-
-    private String name;
+    private String title;
 
 
-    private String price;
+    private String fullTitle;
 
 
-    private String price_sign;
+    private String year;
+
+    private String image;
+
+    private String crew;
+
+    private String imDbRating;
+
+    private String imDbRatingCount;
 
 
-    private String currency;
 
-    private String image_link;
-    private String product_link;
-    private String website_link;
-    private String description;
-    private Integer rating;
-    private String category;
-    private String product_type;
-    private List<tag> tag_list;
-    private List<ProductColor> product_colours;
-    private String api_featured_image;
-    private String created_at;
-    private String updated_at;
-    private String product_api_url;
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getRank() {
+        return rank;
     }
 
-    public String getName() {
-        return name;
+    public String getRankUpDown() {
+        return rankUpDown;
     }
 
-    public String getPrice() {
-        return price;
+    public String getTitle() {
+        return title;
     }
 
-    public String getPrice_sign() {
-        return price_sign;
+    public String getFullTitle() {
+        return fullTitle;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getYear() {
+        return year;
     }
 
-    public String getImage_link() {
-        return image_link;
+    public String getImage() {
+        return image;
     }
 
-    public String getProduct_link() {
-        return product_link;
+    public String getCrew() {
+        return crew;
     }
 
-    public String getWebsite_link() {
-        return website_link;
+    public String getImDbRating() {
+        return imDbRating;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getProduct_type() {
-        return product_type;
-    }
-
-    public List<tag> getTag_list() {
-        return tag_list;
-    }
-
-    public List<ProductColor> getProduct_colours() {
-        return product_colours;
-    }
-
-    public String getApi_featured_image() {
-        return api_featured_image;
-    }
-
-    public String getCreated_at() {
-        return created_at;
-    }
-
-    public String getUpdated_at() {
-        return updated_at;
-    }
-
-    public String getProduct_api_url() {
-        return product_api_url;
+    public String getImDbRatingCount() {
+        return imDbRatingCount;
     }
 }

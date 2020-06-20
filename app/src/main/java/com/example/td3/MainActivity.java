@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String BASE_URL = "http://makeup-api.herokuapp.com/";
+    private static final String BASE_URL = "https://imdb-api.com/en/";
 
 
     private RecyclerView recyclerView;
@@ -35,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        showList();
+        Log.d("First", "oncreateb/4call");
         makeApiCall();
-
+        showList();
 
     }
 
@@ -50,12 +49,11 @@ public class MainActivity extends AppCompatActivity {
             layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
 
-
-
             List<String> input = new ArrayList<>();
             for (int i = 0; i < 100; i++) {
                 input.add("Test" + i);
             }// define an adapter
+
             mAdapter = new ListAdapter(input);
             recyclerView.setAdapter(mAdapter);
         }
@@ -64,36 +62,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void makeApiCall() {
 
+        Log.d("TAG", "BEGINAPI");
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
 
-        Retrofit retrofit = new Retrofit.Builder()
+       Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
+
+
         ProductApi productApi = retrofit.create(ProductApi.class);
 
-        Call<List<product>> call = productApi.ProductResponse();
+        Call<RestMakeUpResponse> call = productApi.getProductResponse();
 
 
-        call.enqueue(new Callback<List<product>>() {
+        call.enqueue(new Callback<RestMakeUpResponse>() {
             @Override
-            public void onResponse(Call<List<product>> call, Response<List<product>> response) {
-                String s;
-                s = response.message();
-                //System.out.print(response);
+            public void onResponse(Call<RestMakeUpResponse> call, Response<RestMakeUpResponse> response) {
+
+                Log.d("TAG", "before if");
+
                 if(response.isSuccessful() && response.body() != null){
 
-                    List<product> pList = response.body();
-             while (!pList.isEmpty()){
-                 Log.d("TAG", "List");
-             }
-             Log.d("TAG2", "after while");
+                    List<product> pList = response.body().results;
                     Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
-
+                    showList();
                 }else{
+                    Log.d("TAG", "INELSE");
                     showError();
                    // Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
 
@@ -102,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<product>> call, Throwable t) {
-
-                //showError();
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<RestMakeUpResponse> call, Throwable t) {
+                Log.d("TAG", "InOnfailure");
+                showError();
+               // Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
 
 
             }

@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface ProductApi {
 
-    @GET("/api/v1/products.json")
-    Call<List<product>> ProductResponse();
+    @GET("/API/MostPopularTVs/k_8rZ9Ie4z")
+    Call<RestMakeUpResponse> getProductResponse();
 
 }
