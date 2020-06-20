@@ -1,15 +1,28 @@
 package com.example.td3;
 
+import android.os.Parcelable;
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
-public class product {
+public class product  {
+
 
     private Integer id;
+
+
     private String brand;
+
     private String name;
+
+
     private String price;
+
+
     private String price_sign;
+
+
     private String currency;
+
     private String image_link;
     private String product_link;
     private String website_link;

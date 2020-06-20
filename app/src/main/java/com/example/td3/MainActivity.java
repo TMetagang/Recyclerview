@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
+//import android.util.log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String BASE_URL = "http://makeup-api.herokuapp.com";
+    private static final String BASE_URL = "http://makeup-api.herokuapp.com/";
 
 
     private RecyclerView recyclerView;
@@ -79,20 +81,32 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<product>>() {
             @Override
             public void onResponse(Call<List<product>> call, Response<List<product>> response) {
+                String s;
+                s = response.message();
+                //System.out.print(response);
                 if(response.isSuccessful() && response.body() != null){
 
                     List<product> pList = response.body();
+             while (!pList.isEmpty()){
+                 Log.d("TAG", "List");
+             }
+             Log.d("TAG2", "after while");
                     Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
 
                 }else{
                     showError();
+                   // Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
+
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<product>> call, Throwable t) {
 
-                showError();
+                //showError();
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -101,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showError() {
-        Toast.makeText(getApplicationContext(), "API Error", Toast.LENGTH_SHORT).show();
+       Toast.makeText(getApplicationContext(), "API Error", Toast.LENGTH_SHORT).show();
     }
 
 
