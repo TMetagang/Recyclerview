@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String BASE_URL = "https://imdb-api.com/en/";
+    private static final String BASE_URL = "https://imdb-api.com/";
 
 
     private RecyclerView recyclerView;
@@ -83,11 +83,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RestMakeUpResponse> call, Response<RestMakeUpResponse> response) {
 
-                Log.d("TAG", "before if");
+
 
                 if(response.isSuccessful() && response.body() != null){
 
-                    List<product> pList = response.body().results;
+                    List<product> pList = response.body().getResults();
+
+                    Log.d("TAG", "after if");
+                   /* if(pList.size() != 0){
+                        Log.d("TAG2", "after if2");
+                    }*/
                     Toast.makeText(getApplicationContext(), "API Success", Toast.LENGTH_SHORT).show();
                     showList();
                 }else{

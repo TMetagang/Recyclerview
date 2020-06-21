@@ -36,6 +36,19 @@ public class product  {
         return id;
     }
 
+    public product(String id, String rank, String rankUpDown, String title, String fullTitle, String year, String image, String crew, String imDbRating, String imDbRatingCount) {
+        this.id = id;
+        this.rank = rank;
+        this.rankUpDown = rankUpDown;
+        this.title = title;
+        this.fullTitle = fullTitle;
+        this.year = year;
+        this.image = image;
+        this.crew = crew;
+        this.imDbRating = imDbRating;
+        this.imDbRatingCount = imDbRatingCount;
+    }
+
     public String getRank() {
         return rank;
     }

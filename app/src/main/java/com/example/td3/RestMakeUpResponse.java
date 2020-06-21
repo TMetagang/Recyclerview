@@ -6,5 +6,7 @@ public class RestMakeUpResponse {
 
     public List<product> results;
 
-
+    public List<product> getResults() {
+        return results;
+    }
 }
